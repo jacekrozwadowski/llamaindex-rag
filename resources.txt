@@ -1,0 +1,8 @@
+llama-index-vector-stores-elasticsearch
+llama-index
+openai
+python-dotenv
+black
+spacy
+
+# python -m spacy download pl_core_news_md
