@@ -1,8 +1,10 @@
 llama-index-vector-stores-elasticsearch
+llama-index-graph-stores-neo4j
 llama-index
 openai
 python-dotenv
 black
 spacy
+graspologic
 
 # python -m spacy download pl_core_news_md

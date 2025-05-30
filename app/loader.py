@@ -1,10 +1,7 @@
 import os
 from pydantic import BaseModel, Field
-from typing import List
 from llama_index.program.openai import OpenAIPydanticProgram
 from llama_index.core.extractors import PydanticProgramExtractor
-from llama_index.core import SimpleDirectoryReader
-from llama_index.core.node_parser import TokenTextSplitter
 from llama_index.llms.openai import OpenAI
 from llama_index.core import Settings
 from llama_index.embeddings.openai import OpenAIEmbedding, OpenAIEmbeddingModelType
@@ -32,6 +29,8 @@ def model_setup():
         model=OpenAIEmbeddingModelType.TEXT_EMBED_3_SMALL, embed_batch_size=10
     )
     Settings.embed_model = embed_model
+
+    return llm, embed_model
 
 
 def load_data(input_dir):
