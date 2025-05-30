@@ -95,6 +95,16 @@ https://docs.llamaindex.ai/en/stable/examples/node_parsers/semantic_double_mergi
 https://bitpeak.pl/chunking-methods-in-rag-methods-comparison/
 https://medium.com/@sayantanmanna840/rag-chunking-strategies-with-llamaindex-optimizing-your-retrieval-pipeline-6fdb9f0d50c2
 
+ES
 https://docs.llamaindex.ai/en/stable/examples/vector_stores/Elasticsearch_demo/
 https://docs.llamaindex.ai/en/stable/examples/vector_stores/ElasticsearchIndexDemo/
+
+Metadata
+https://docs.llamaindex.ai/en/stable/examples/cookbooks/oreilly_course_cookbooks/Module-4/Metadata_Extraction/
+
+Fusion Retriever
+https://docs.llamaindex.ai/en/stable/examples/retrievers/simple_fusion/
+
+GraphRag
+https://docs.llamaindex.ai/en/stable/examples/cookbooks/GraphRAG_v2/
 ```
