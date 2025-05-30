@@ -23,7 +23,7 @@ python -m spacy download pl_core_news_md
 # set OPENAI_API_KEY
 ```
 
-# Load data into system
+# Load data into RAG system
 ```bash
 (venv) >python -m app.loader
 ```
@@ -52,8 +52,14 @@ Scrum Master jest odpowiedzialny za zapewnienie, aby Scrum był stosowany zgodni
 Enter a query (or 'done' to finish): done
 ```
 
+# Load data into GraphRAG system
+```bash
+(venv) >python -m app.g_loader
+```
+
 # Ask Grap RAG
 ```text
+(venv) >python -m app.q_query
 Query: Czym różni się Agile od Scrum'a?
 Answer: Agile to szeroka filozofia i metodyka zarządzania projektami, oparta na wartościach takich jak elastyczność, współpraca, iteracyjny rozwój i szybkie dostarczanie wartości. Scrum jest jednym z najbardziej popularnych frameworków realizujących zasady Agile, zawierającym określone role (np. Product Owner, Scrum Team), ceremonie (np. Sprint, Daily Scrum) oraz artefakty (np. Product Backlog, Sprint Backlog). Scrum opisany jest w "Przewodniku po Scrumie" i służy praktycznemu wdrażaniu zasad Agile w projektach.
 
