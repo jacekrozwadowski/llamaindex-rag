@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 import nest_asyncio
 
@@ -21,7 +22,9 @@ def main():
 
     log.info("GraphRAGStore start")
     graph_store = GraphRAGStore(
-        username="neo4j", password="password", url="bolt://localhost:7687"
+        username=os.environ["N4J_USERNAME"],
+        password=os.environ["N4J_PASSWORD"],
+        url=os.environ["N4J_URL"],
     )
     graph_store.set_llm_client(llm)
     graph_store.verify_version()
