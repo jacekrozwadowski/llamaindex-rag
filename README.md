@@ -83,10 +83,10 @@ python -m spacy download pl_core_news_md
 (venv) >python -m app.query
 Enter a query (or 'done' to finish): Czym różni się Agile od Scrum'a? 
 Agile to ogólna filozofia i podejście do zarządzania projektami, które opiera się na iteracyjnym i
- przyrostowym działaniu,skupiając się na szybkim dostarczaniu wartości i zbieraniu informacji zwrotnej. 
- Scrum natomiast jest konkretnym ramem postępowania w ramach Agile, opartym na empiryzmie i koncepcji 
- lean, które definiują strukturę, role, wydarzenia  i praktyki umożliwiające realizację projektów 
- zgodnie z zasadami Agile.
+przyrostowym działaniu,skupiając się na szybkim dostarczaniu wartości i zbieraniu informacji zwrotnej. 
+Scrum natomiast jest konkretnym ramem postępowania w ramach Agile, opartym na empiryzmie i koncepcji 
+lean, które definiują strukturę, role, wydarzenia  i praktyki umożliwiające realizację projektów 
+zgodnie z zasadami Agile.
 
 Enter a query (or 'done' to finish): Co to jest Agile?                
 Agile to podejście do zarządzania projektami, które polega na częstym wydawaniu działających wersji 
@@ -151,12 +151,12 @@ co pozwala na efektywne osiąganie celów projektowych i dostosowywanie się do 
 
 Query: Co to jest Sprint?
 Answer: Sprint to krótkie, iteracyjne cykle pracy w metodologii Scrum, podczas których zespół
- realizuje wybrane zadania z Backlogu Produktu, dążąc do osiągnięcia określonego celu Sprintu 
- (Sprint Goal). W trakcie Sprintu zespół planuje, realizuje zadania, codziennie spotyka się na 
- Daily Scrum, a na końcu prezentuje wyniki podczas Sprint Review. Celem Sprintu jest 
- dostarczenie działającego, wartościowego przyrostu produktu, który można ocenić i udoskonalić 
- w kolejnych etapach. Sprint stanowi podstawową jednostkę czasu w Scrumie, umożliwiając efektywne 
- zarządzanie projektem i uczenie się poprzez doświadczenie.
+realizuje wybrane zadania z Backlogu Produktu, dążąc do osiągnięcia określonego celu Sprintu 
+(Sprint Goal). W trakcie Sprintu zespół planuje, realizuje zadania, codziennie spotyka się na 
+Daily Scrum, a na końcu prezentuje wyniki podczas Sprint Review. Celem Sprintu jest 
+dostarczenie działającego, wartościowego przyrostu produktu, który można ocenić i udoskonalić 
+w kolejnych etapach. Sprint stanowi podstawową jednostkę czasu w Scrumie, umożliwiając efektywne 
+zarządzanie projektem i uczenie się poprzez doświadczenie.
 
 Query: Jak duży powinien być zespół w Scrum?
 Answer: Zgodnie z "Przewodnikiem po Scrumie" (Scrum Guide) oraz najlepszymi praktykami, zespół 
