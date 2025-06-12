@@ -32,11 +32,11 @@ load_dotenv()
 
 
 def custom_query(query, query_str):
-    print("custom query", query)
+    # print("custom query", query)
     return query
 
 
-def create_rrf_query_engine():
+def create_rrf_query_engine(areas):
     vector_store_bm25 = ElasticsearchStore(
         index_name=os.environ["ES_INDEX"],
         es_url=os.environ["ES_URL"],
@@ -55,8 +55,17 @@ def create_rrf_query_engine():
     index_bm25 = VectorStoreIndex.from_vector_store(vector_store=vector_store_bm25)
     index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
 
+    vector_store_kwargs = {
+        "custom_query": custom_query,  # use this to see ES query
+    }
+    if areas and len(areas) > 0:
+        vector_store_kwargs["es_filter"] = [{"terms": {"metadata.tags": areas}}]
+
     retriever = QueryFusionRetriever(
-        [index_bm25.as_retriever(), index.as_retriever()],
+        [
+            index_bm25.as_retriever(vector_store_kwargs=vector_store_kwargs),
+            index.as_retriever(vector_store_kwargs=vector_store_kwargs),
+        ],
         mode=FUSION_MODES.RECIPROCAL_RANK,
         similarity_top_k=5,
         num_queries=3,  # set this to 1 to disable query generation
@@ -100,8 +109,19 @@ def create_simple_query_engine():
 
 def main():
     model_setup()
-    query_engine = create_rrf_query_engine()
+
     # query_engine = create_simple_query_engine()
+
+    area = input("Enter areas selected by comma: ")
+    if not area or (area and len(area) == 0):
+        print("No area selected! I'm using all")
+    else:
+        print(f"Area {area} selected")
+
+    areas = area.split(",")
+    areas = [a.strip() for a in areas]
+    areas = [a for a in areas if a != ""]
+    query_engine = create_rrf_query_engine(areas)
 
     while True:
         query = input("Enter a query (or 'done' to finish): ")
