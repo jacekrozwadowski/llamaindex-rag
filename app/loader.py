@@ -7,6 +7,7 @@ from llama_index.core import Settings
 from llama_index.embeddings.openai import OpenAIEmbedding, OpenAIEmbeddingModelType
 from llama_index.core import StorageContext, VectorStoreIndex
 from typing import List
+from pathlib import Path
 
 from llama_index.core.node_parser import (
     SemanticDoubleMergingSplitterNodeParser,
@@ -46,7 +47,9 @@ def load_data(input_dir):
             self.nlp = None
             self.stopwords: List[str] = []
 
-    documents = SimpleDirectoryReader(input_dir=input_dir).load_data(show_progress=True)
+    documents = SimpleDirectoryReader(input_dir=input_dir, recursive=True).load_data(
+        show_progress=True
+    )
 
     config = PolishLanguageConfig(language="polish", spacy_model="pl_core_news_md")
     splitter = SemanticDoubleMergingSplitterNodeParser(
@@ -61,7 +64,7 @@ def load_data(input_dir):
     return nodes
 
 
-def extract_metadata(nodes):
+def extract_metadata(nodes, input_dir=None):
     class NodeMetadata(BaseModel):
         """Node metadata."""
 
@@ -96,9 +99,16 @@ def extract_metadata(nodes):
     metadata_nodes = metadata_extractor.process_nodes(nodes)
 
     # add some specific info into metadata
-    # for md in metadata_nodes:
-    #     metadata = md.metadata
-    #     metadata['tags'] = ['t1','t2']
+    if input_dir:
+        for md in metadata_nodes:
+            metadata = md.metadata
+            file_path = metadata.get("file_path", None)
+            if file_path:
+                _, file_uri = file_path.split(input_dir)
+                file_path_parts = list(Path(file_uri).parts[1:-1])
+                file_path_parts = [p.lower() for p in file_path_parts]
+                if file_path_parts and len(file_path_parts) > 0:
+                    metadata["tags"] = file_path_parts
 
     return metadata_nodes
 
@@ -119,8 +129,9 @@ def load_es(nodes):
 
 def main():
     model_setup()
-    orig_nodes = load_data(input_dir="./documents")
-    metadata_nodes = extract_metadata(orig_nodes)
+    doc_path = "documents"
+    orig_nodes = load_data(input_dir=doc_path)
+    metadata_nodes = extract_metadata(orig_nodes, input_dir=doc_path)
     # print(metadata_nodes[0].get_content(metadata_mode="all"))
     load_es(metadata_nodes)
 
