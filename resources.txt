@@ -1,6 +1,8 @@
 llama-index-vector-stores-elasticsearch
 llama-index-graph-stores-neo4j
 llama-index
+# llama-index-llms-openai-like
+# llama-index-embeddings-openai-like
 openai
 python-dotenv
 black

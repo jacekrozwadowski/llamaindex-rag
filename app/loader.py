@@ -1,4 +1,6 @@
 import os
+
+import httpx
 from pydantic import BaseModel, Field
 from llama_index.program.openai import OpenAIPydanticProgram
 from llama_index.core.extractors import PydanticProgramExtractor
@@ -19,6 +21,34 @@ from llama_index.vector_stores.elasticsearch import ElasticsearchStore
 
 
 load_dotenv()
+
+
+# def onprem_model_setup():
+#     from llama_index.llms.openai_like import OpenAILike
+#     from llama_index.embeddings.openai_like import OpenAILikeEmbedding
+#
+#     llm = OpenAILike(
+#         model="<model>",
+#         api_base="http://...../../v1",
+#         api_key="fake",
+#         is_chat_model=True,
+#         is_function_calling_model=True,
+#         http_client=httpx.Client(verify=False),
+#         async_http_client=httpx.AsyncClient(verify=False),
+#     )
+#
+#     embed_model=OpenAILikeEmbedding(
+#         model="<model>",
+#         api_base="http://.....",
+#         api_key="fake",
+#         embed_batch_size=10,
+#         http_client=httpx.Client(verify=False),
+#         async_http_client=httpx.AsyncClient(verify=False),
+#     )
+#
+#     Settings.llm = llm
+#     Settings.embed_model = embed_model
+#     return llm, embed_model
 
 
 def model_setup():
